@@ -45,7 +45,9 @@ export function FirmTableRow({ firm, index, favourite, onToggleFavourite }: RowP
             {firm.name}
           </Link>
           <span className="flex items-center gap-1.5">
-            <img src="/images/catalog/flag-uae.png" width={24} height={18} alt="" className="block h-[18px] w-6 shrink-0 object-cover" />
+            {firm.country === "EUA" && (
+              <img src="/images/catalog/flag-uae.png" width={24} height={18} alt="" className="block h-[18px] w-6 shrink-0 object-cover" />
+            )}
             <span className="type-caption whitespace-nowrap text-muted">
               <span className="text-ink">{firm.country} </span>({firm.years} years)
             </span>
@@ -134,13 +136,15 @@ export function FirmCard({ firm, index, favourite, onToggleFavourite }: RowProps
           </Link>
           <span className="flex flex-wrap items-center gap-2 md:gap-3">
             <span className="flex items-center gap-1 md:gap-1.5">
-              <img
-                src="/images/catalog/flag-uae.png"
-                width={24}
-                height={18}
-                alt=""
-                className="block h-[15px] w-5 shrink-0 object-cover md:h-[18px] md:w-6"
-              />
+              {firm.country === "EUA" && (
+                <img
+                  src="/images/catalog/flag-uae.png"
+                  width={24}
+                  height={18}
+                  alt=""
+                  className="block h-[15px] w-5 shrink-0 object-cover md:h-[18px] md:w-6"
+                />
+              )}
               <span className="text-[12px] leading-4 whitespace-nowrap text-ink md:hidden">
                 {firm.country} ({firm.years}y)
               </span>
