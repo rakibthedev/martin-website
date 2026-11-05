@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Star 1">
+<path d="M14 1H42C49.1797 1 55 6.8203 55 14V42C55 49.1797 49.1797 55 42 55H14C6.8203 55 1 49.1797 1 42V14C1 6.8203 6.8203 1 14 1Z" fill="#052116"/>
+<path d="M14 1H42C49.1797 1 55 6.8203 55 14V42C55 49.1797 49.1797 55 42 55H14C6.8203 55 1 49.1797 1 42V14C1 6.8203 6.8203 1 14 1Z" stroke="#44423E" stroke-width="2"/>
+<path id="Star" d="M28 15L31.4385 23.2673L40.3637 23.9828L33.5637 29.8077L35.6412 38.5172L28 33.85L20.3588 38.5172L22.4363 29.8077L15.6363 23.9828L24.5615 23.2673L28 15Z" fill="#00D26A"/>
+</g>
+</svg>

@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/*
+ * PropFirmScores design tokens — mirrored 1:1 from the Figma variables
+ * (Signed-in · Account page). Use these via Tailwind utilities, e.g.
+ * bg-page, bg-surface, text-ink, text-muted, border-line, text-brand.
+ */
+@theme {
+  /* Neutrals */
+  --color-page: #151513; /* color/neutral/page */
+  --color-surface: #212121; /* color/neutral/surface */
+  --color-card: #2b2a27; /* color/neutral/card */
+  --color-raised: #393734; /* color/neutral/raised */
+  --color-line: #44423e; /* color/neutral/border */
+  --color-muted: #898587; /* color/neutral/muted */
+  --color-ink: #f0f0f0; /* color/neutral/text */
+  --color-white: #ffffff; /* color/neutral/white */
+
+  /* Brand */
+  --color-brand: #00d26a; /* color/brand/green */
+  --color-brand-tint: #052116; /* color/brand/tint */
+  --color-brand-tint-raised: #0a2b1e; /* color/brand/tint-raised */
+  --color-fundingpips-navy: #121355;
+  --color-guardian-blue: #0b3d91;
+  --color-funded-blue: #1e4fd8;
+
+  /* Status */
+  --color-danger: #ff6b6b;
+  --color-danger-bg: #2a1414;
+  --color-warning: #f5a524;
+  --color-warning-bg: #2a2110;
+
+  /* Typography */
+  --font-sans: var(--font-mulish), ui-sans-serif, system-ui, sans-serif;
+
+  /* Breakpoints: md = tablet (768 design), xl = desktop (1920 design) */
+  --breakpoint-md: 768px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Named Figma text styles ("Martin/…") */
+@utility type-display {
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 600;
+}
+@utility type-h1 {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 600;
+}
+@utility type-h2 {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 600;
+}
+@utility type-h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+@utility type-label {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@utility type-body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+@utility type-body-sm {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+@utility type-caption {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+@utility type-table-heading {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+@utility type-overline {
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+html {
+  background: var(--color-page);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: break-word;
+}
+
+button {
+  cursor: pointer;
+}
