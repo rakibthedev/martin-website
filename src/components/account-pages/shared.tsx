@@ -30,19 +30,24 @@ export function PageHead({
   description,
   children,
   align = "md:items-center",
+  titleSlot,
 }: {
   title: string;
   description: React.ReactNode;
   children?: React.ReactNode;
   /** vertical alignment of the actions on md+ (Figma varies per page/breakpoint) */
   align?: string;
+  /** replaces the default <h1> (e.g. title + unread pill) */
+  titleSlot?: React.ReactNode;
 }) {
   return (
     <div className={`flex w-full flex-col items-start gap-6 md:flex-row md:flex-wrap md:gap-3 xl:gap-6 ${align}`}>
       <div className="flex w-full min-w-0 flex-col items-start gap-2 md:w-auto md:min-w-[280px] md:flex-1">
-        <h1 className="text-[32px] font-semibold leading-[42px] text-ink md:text-[44px] md:font-extrabold md:leading-[52px]">
-          {title}
-        </h1>
+        {titleSlot ?? (
+          <h1 className="text-[32px] font-semibold leading-[42px] text-ink md:text-[44px] md:font-extrabold md:leading-[52px]">
+            {title}
+          </h1>
+        )}
         <p className="type-body w-full text-muted">{description}</p>
       </div>
       {children}
@@ -50,13 +55,14 @@ export function PageHead({
   );
 }
 
-export type PillVariant = "primary" | "ghost" | "outline" | "subtle" | "white";
+export type PillVariant = "primary" | "ghost" | "outline" | "outline-page" | "subtle" | "white";
 const PILL: Record<PillVariant, string> = {
   primary: "bg-brand text-page hover:brightness-110",
   /** Figma "Button / Pill" Ghost — 1px border, green label */
   ghost: "border border-line text-brand hover:bg-brand-tint",
   /** Figma "Button" Outline on surface — green border, ink label */
   outline: "border border-brand bg-surface text-ink hover:bg-brand-tint",
+  "outline-page": "border border-brand bg-page text-ink hover:bg-brand-tint",
   subtle: "bg-raised text-ink hover:brightness-125",
   white: "bg-ink text-page hover:bg-white",
 };
@@ -156,16 +162,19 @@ export function CardHeader({
   title,
   count,
   right,
+  inline = false,
   className = "",
 }: {
   title: string;
   count?: React.ReactNode;
   right?: React.ReactNode;
+  /** keep the count chip next to the title at every breakpoint */
+  inline?: boolean;
   className?: string;
 }) {
   return (
     <div className={`flex w-full items-start gap-2.5 xl:items-center ${className}`}>
-      <h2 className={`min-w-0 flex-1 text-[22px] font-extrabold leading-7 text-ink ${right ? "" : "xl:flex-none"}`}>
+      <h2 className={`min-w-0 text-[22px] font-extrabold leading-7 text-ink ${inline ? "" : "flex-1"} ${right || inline ? "" : "xl:flex-none"}`}>
         {title}
       </h2>
       {count !== undefined && <CountChip>{count}</CountChip>}
@@ -212,4 +221,9 @@ export function FirmTile({
   return (
     <span
       className={`flex shrink-0 items-center justify-center font-extrabold leading-normal text-white ${bg} ${className}`}
- 
+      style={{ width: size, height: size, borderRadius: radius, fontSize: textSize }}
+    >
+      {initials}
+    </span>
+  );
+}

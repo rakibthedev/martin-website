@@ -65,7 +65,7 @@ export function Chip({
         CHIP_SIZE[size]
       } ${selected ? "border-brand bg-brand-tint text-brand" : "border-line bg-page text-ink hover:border-muted"}`}
     >
-      {withTick && selected && <Icon name="tick-circle-00d26a" size={16} />}
+      {withTick && selected && <Icon name="tick-circle-outline-00d26a" size={16} />}
       {children}
     </button>
   );
@@ -89,7 +89,7 @@ export function SectionHead({ n, title, status, valid }: { n: number; title: str
       </div>
       {status === "done" && valid && (
         <span className="flex shrink-0 items-center gap-1.5 type-label text-brand">
-          <Icon name="tick-circle-00d26a" size={16} />
+          <Icon name="tick-circle-outline-00d26a" size={16} />
           Complete
         </span>
       )}

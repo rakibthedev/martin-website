@@ -1,3 +1,8 @@
-export default function Page() {
-  return <div className="p-12 type-h2">FundingPips profile - in progress</div>;
+import type { Metadata } from "next";
+import { FirmProfile } from "@/components/flows/firm/FirmProfile";
+
+export const metadata: Metadata = { title: "FundingPips Review · PropFirmScores" };
+
+export default function FundingPipsPage() {
+  return <FirmProfile />;
 }

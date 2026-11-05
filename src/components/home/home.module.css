@@ -1,0 +1,115 @@
+/* Home hero motion — from Figma get_motion_context (8s loop, ease-in-out). */
+
+/* "Upper right / emerald ambience": translate in % of the ellipse box, opacity 0.15 → 0.225 */
+.glowTr {
+  opacity: 0.15;
+  animation: glowTr 8s ease-in-out infinite;
+}
+@keyframes glowTr {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.15;
+  }
+  25% {
+    transform: translate(-6.08%, 2.99%);
+    opacity: 0.174;
+  }
+  50% {
+    transform: translate(-9.81%, 8.31%);
+    opacity: 0.225;
+  }
+  75% {
+    transform: translate(-5.49%, 5.15%);
+    opacity: 0.19;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.15;
+  }
+}
+
+/* "Lower left / emerald ambience": opacity 0.13 → 0.205 */
+.glowBl {
+  opacity: 0.13;
+  animation: glowBl 8s ease-in-out infinite;
+}
+@keyframes glowBl {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.13;
+  }
+  25% {
+    transform: translate(7.44%, -4.97%);
+    opacity: 0.205;
+  }
+  50% {
+    transform: translate(10.94%, -8.87%);
+    opacity: 0.168;
+  }
+  75% {
+    transform: translate(3.39%, -4.7%);
+    opacity: 0.147;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.13;
+  }
+}
+
+/* "Grid sweep / 01–08": each cell flashes once per 8s loop, staggered by 0.82s.
+   Base/peak opacity per breakpoint via --sweep-lo / --sweep-hi. */
+.sweep {
+  --sweep-lo: 0.035;
+  --sweep-hi: 0.48;
+  opacity: var(--sweep-lo);
+  animation: sweep 8s ease-in-out infinite both;
+}
+@media (min-width: 768px) {
+  .sweep {
+    --sweep-lo: 0.045;
+    --sweep-hi: 0.73;
+  }
+}
+@keyframes sweep {
+  0%,
+  1.88% {
+    opacity: var(--sweep-lo);
+  }
+  11.88% {
+    opacity: var(--sweep-hi);
+  }
+  23%,
+  100% {
+    opacity: var(--sweep-lo);
+  }
+}
+
+/* Offer marquee: track holds the offers twice, slides by half its width. */
+.marquee {
+  animation: marquee 60s linear infinite;
+}
+.marqueeReverse {
+  animation: marquee 60s linear infinite reverse;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee:hover,
+.marqueeReverse:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glowTr,
+  .glowBl,
+  .sweep,
+  .marquee,
+  .marqueeReverse {
+    animation: none;
+  }
+}

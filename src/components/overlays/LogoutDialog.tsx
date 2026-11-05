@@ -24,19 +24,18 @@ function Dialog({ close, showToast }: { close: () => void; showToast: (m: string
   const titleId = useId();
   const descId = useId();
   const [allDevices, setAllDevices] = useState(false);
-  const cancelRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  // Focus the safe action and keep Tab inside the dialog.
+  // Move focus into the dialog and keep Tab inside it.
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null;
-    cancelRef.current?.focus();
+    dialogRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Tab" || !dialogRef.current) return;
       const f = dialogRef.current.querySelectorAll<HTMLElement>("button, input");
       const first = f[0];
       const last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dialogRef.current)) {
         e.preventDefault();
         last.focus();
       } else if (!e.shiftKey && document.activeElement === last) {
@@ -66,11 +65,12 @@ function Dialog({ close, showToast }: { close: () => void; showToast: (m: string
     >
       <div
         ref={dialogRef}
+        tabIndex={-1}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descId}
-        className="m-auto flex w-full max-w-[736px] flex-col items-start gap-3 rounded-[28px] border border-line bg-surface p-4 md:p-5 xl:w-[520px] xl:max-w-none xl:gap-5 xl:p-6 xl:drop-shadow-[0px_24px_32px_black]"
+        className="m-auto flex w-full max-w-[736px] flex-col outline-none items-start gap-3 rounded-[28px] border border-line bg-surface p-4 md:p-5 xl:w-[520px] xl:max-w-none xl:gap-5 xl:p-6 xl:drop-shadow-[0px_24px_32px_black]"
       >
         <span className="flex size-14 shrink-0 items-center justify-center rounded-full bg-danger">
           <Icon name="logout-24-ff6b6b" size={24} />
@@ -122,7 +122,6 @@ function Dialog({ close, showToast }: { close: () => void; showToast: (m: string
 
         <div className="flex w-full items-start justify-end gap-4">
           <button
-            ref={cancelRef}
             type="button"
             onClick={close}
             className="type-label flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-brand bg-brand-tint px-4 py-1 text-ink transition-colors hover:bg-brand-tint-raised md:h-11 xl:h-12"

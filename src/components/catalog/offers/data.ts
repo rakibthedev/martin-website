@@ -1,8 +1,9 @@
 /** Mock data for /offers (Figma: Offers / Desktop 1920 — 379:14081). */
 
+/** Logo artwork inside the 52px (desktop) / 50px (tablet, mobile) logo tile of an offer card. */
 export type OfferLogo =
-  | { kind: "image"; src: string; width: number; height: number; bg?: string }
-  | { kind: "text"; initials: string; color: string; bg: string };
+  | { kind: "image"; src: string; width: number; height: number; cover?: boolean }
+  | { kind: "text"; initials: string };
 
 export type Offer = {
   id: string;
@@ -12,6 +13,8 @@ export type Offer = {
   code: string;
   logo: OfferLogo;
   href: string;
+  /** Figma shows a ↗ on this card's "Get deal" button (desktop only). */
+  dealArrow?: boolean;
 };
 
 export const FIRM_HREF = "/firms/fundingpips";
@@ -22,15 +25,16 @@ export const OFFERS: Offer[] = [
     firm: "Aqua Funded",
     discount: 50,
     code: "6JO",
-    logo: { kind: "image", src: "/images/catalog/offers/aquafunded-logo.svg", width: 56, height: 26.552 },
+    logo: { kind: "image", src: "/images/catalog/offers/aquafunded-logo.svg", width: 32, height: 15.172 },
     href: FIRM_HREF,
+    dealArrow: true,
   },
   {
     id: "equity-edge",
     firm: "Equity Edge",
     discount: 50,
     code: "PFS",
-    logo: { kind: "text", initials: "EE", color: "#f0f0f0", bg: "#212121" },
+    logo: { kind: "text", initials: "EE" },
     href: FIRM_HREF,
   },
   {
@@ -38,7 +42,7 @@ export const OFFERS: Offer[] = [
     firm: "Atlas Funded",
     discount: 50,
     code: "4SU",
-    logo: { kind: "text", initials: "AF", color: "#00d26a", bg: "#212121" },
+    logo: { kind: "text", initials: "AF" },
     href: FIRM_HREF,
   },
   {
@@ -46,7 +50,7 @@ export const OFFERS: Offer[] = [
     firm: "Blue Guardian",
     discount: 35,
     code: "1X5H",
-    logo: { kind: "image", src: "/images/catalog/offers/blueguardian-logo.png", width: 24, height: 24 },
+    logo: { kind: "image", src: "/images/catalog/offers/blueguardian-logo.png", width: 32, height: 24, cover: true },
     href: FIRM_HREF,
   },
   {
@@ -54,7 +58,7 @@ export const OFFERS: Offer[] = [
     firm: "Alpha Capital",
     discount: 15,
     code: "XWGWC",
-    logo: { kind: "image", src: "/images/catalog/offers/alphacapital-logo.svg", width: 20, height: 20 },
+    logo: { kind: "image", src: "/images/catalog/offers/alphacapital-logo.svg", width: 32, height: 32 },
     href: FIRM_HREF,
   },
   {
@@ -62,7 +66,7 @@ export const OFFERS: Offer[] = [
     firm: "FundingPips",
     discount: null,
     code: "D76151DB",
-    logo: { kind: "image", src: "/images/catalog/offers/fundingpips-logo.svg", width: 24, height: 24 },
+    logo: { kind: "image", src: "/images/catalog/offers/fundingpips-logo.svg", width: 32, height: 32 },
     href: FIRM_HREF,
   },
 ];

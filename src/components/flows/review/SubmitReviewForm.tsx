@@ -136,7 +136,6 @@ export function SubmitReviewForm() {
   const pct = checklist.reduce((s, c) => s + (c.done ? c.weight : 0), 0);
 
   const statusOf = (n: Step): SectionStatus => (n === active ? "active" : n < active ? "done" : "upcoming");
-  const validOf = (n: Step) => (n === 1 ? step1Valid : n === 2 ? true : confirmed);
 
   const goTo = (n: Step) => {
     setActive(n);
@@ -285,7 +284,7 @@ export function SubmitReviewForm() {
                             <span className="type-label text-ink">{f.name}</span>
                             <span className="type-caption text-muted">{f.meta}</span>
                           </span>
-                          {f.id === firmId && <Icon name="tick-circle-00d26a" size={16} />}
+                          {f.id === firmId && <Icon name="tick-circle-outline-00d26a" size={16} />}
                         </button>
                       </li>
                     ))}
@@ -377,7 +376,7 @@ export function SubmitReviewForm() {
                 right={
                   <span className={`flex items-center gap-1 ${bodyOk ? "text-brand" : "text-muted"}`}>
                     {body.length} / {BODY_MAX} · min {BODY_MIN}
-                    {bodyOk && <Icon name="tick-circle-00d26a" size={14} />}
+                    {bodyOk && <Icon name="tick-circle-outline-00d26a" size={14} />}
                   </span>
                 }
               />
@@ -489,7 +488,7 @@ export function SubmitReviewForm() {
                       {formatSize(file.size)} ·
                       {uploaded ? (
                         <>
-                          <Icon name="tick-circle-00d26a" size={14} />
+                          <Icon name="tick-circle-outline-00d26a" size={14} />
                           Uploaded
                         </>
                       ) : (
@@ -626,7 +625,7 @@ export function SubmitReviewForm() {
             <div className="flex w-full flex-col gap-3">
               <div className="flex flex-col items-start gap-3 xl:flex-row xl:items-center">
                 <PillButton variant="outline" onClick={() => setDraftSaved(true)}>
-                  <Icon name={draftSaved ? "tick-circle-00d26a" : "save-2-f0f0f0"} size={16} />
+                  <Icon name={draftSaved ? "tick-circle-outline-00d26a" : "save-2-f0f0f0"} size={16} />
                   {draftSaved ? "Draft saved" : "Save draft"}
                 </PillButton>
                 <PillButton variant="primary" onClick={submit}>
@@ -669,7 +668,7 @@ export function SubmitReviewForm() {
               {checklist.map((c) => (
                 <li key={c.label} className="flex items-center gap-2.5">
                   {c.done ? (
-                    <Icon name="tick-circle-00d26a" size={16} />
+                    <Icon name="tick-circle-outline-00d26a" size={16} />
                   ) : (
                     <span className="flex size-4 items-center justify-center">
                       <Icon name="circle-898587" size={14} />
@@ -690,17 +689,17 @@ export function SubmitReviewForm() {
               <p className="type-caption text-muted">How traders will see it</p>
             </div>
             <article className="flex w-full flex-col gap-3 rounded-[18px] bg-page p-4 md:p-5 xl:p-6">
-              <div className="flex w-full flex-wrap items-center gap-2.5">
+              <div className="flex w-full flex-wrap items-center gap-2.5 md:flex-col md:items-start xl:flex-row xl:items-center">
                 <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-raised type-caption text-brand">
                   {previewInitials}
                 </span>
-                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                <div className="flex min-w-0 flex-1 flex-col gap-0.5 xl:min-w-[180px]">
                   <p className="type-label text-ink">{previewName}</p>
                   <p className="type-caption text-muted">{previewMeta}</p>
                 </div>
                 {uploaded && (
                   <span className="flex items-center gap-1 rounded-full bg-brand-tint px-3 py-1.5 type-caption text-brand">
-                    <Icon name="tick-circle-00d26a" size={14} />
+                    <Icon name="tick-circle-outline-00d26a" size={14} />
                     Proof verified
                   </span>
                 )}
